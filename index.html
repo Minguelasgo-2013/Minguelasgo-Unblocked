@@ -3,21 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUBG Clón - Mis Juegos Unblocked</title>
+    <title>NUBG Clón - MiguelasgoCorp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Miguelasgo<span>Corp</span></div>
-        <input type="text" id="search" placeholder="Buscar un juego...">
-    </header>
-    
-    <main class="grid" id="game-grid"></main>
+    <div class="app-container">
+        
+        <!-- BARRA LATERAL IZQUIERDA IDENTICA -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">🎮</div>
+            <div class="nav-icon active">🏠</div>
+            <div class="nav-icon">⭐</div>
+            <div class="nav-icon">🔥</div>
+            <div class="nav-icon">🎮</div>
+            <div class="nav-icon">⚙️</div>
+        </aside>
 
-    <!-- Ventana flotante (Iframe) para cargar el juego en la misma pantalla -->
+        <!-- CONTENIDO PRINCIPAL DERECHO -->
+        <div class="main-content">
+            <header>
+                <div class="logo">Miguelasgo<span>Corp</span></div>
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Search...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="header-buttons">
+                    <button class="btn-chat">Global Chat</button>
+                    <button class="btn-discord">🔮 Discord</button>
+                    <button class="btn-heart">❤️</button>
+                </div>
+            </header>
+
+            <!-- SECCIÓN 1: TRENDING GAMES -->
+            <section class="row-container">
+                <div class="row-header">
+                    <h2>Trending Games</h2>
+                    <span class="view-all">View All</span>
+                </div>
+                <div class="grid" id="trending-grid"></div>
+            </section>
+
+            <!-- SECCIÓN 2: NEW GAMES -->
+            <section class="row-container">
+                <div class="row-header">
+                    <h2>New Games</h2>
+                    <span class="view-all">View All</span>
+                </div>
+                <div class="grid" id="new-grid"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- VENTANA FLOTANTE DEL JUEGO -->
     <div id="game-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times; Cerrar Juego</span>
+            <span class="close-btn">&times; Close Game</span>
             <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
