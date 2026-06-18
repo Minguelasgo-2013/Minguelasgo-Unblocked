@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUBG Clón - Mis Juegos Unblocked</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">NUBG<span>Corp</span></div>
+        <input type="text" id="search" placeholder="Buscar un juego...">
+    </header>
+    
+    <main class="grid" id="game-grid"></main>
+
+    <!-- Ventana flotante (Iframe) para cargar el juego en la misma pantalla -->
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times; Cerrar Juego</span>
+            <iframe id="game-frame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
