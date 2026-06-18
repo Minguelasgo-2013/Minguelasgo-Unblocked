@@ -1,70 +1,41 @@
-// Catálogo con portadas HD y enlaces estables de juegos populares
+// Base de datos de juegos dividida por categorías con fotos directas estables
 const games = [
-    { 
-        name: "Slope Unblocked", 
-        img: "https://crazygames.com", 
-        url: "https://mathandreadingscienceacademy.org" 
-    },
-    { 
-        name: "Retro Bowl", 
-        img: "https://crazygames.com", 
-        url: "https://github.io" 
-    },
-    { 
-        name: "1v1.LOL", 
-        img: "https://crazygames.com", 
-        url: "https://1v1.lol" 
-    },
-    { 
-        name: "Minecraft Classic", 
-        img: "https://crazygames.com", 
-        url: "https://minecraft.net" 
-    },
-    { 
-        name: "Run 3", 
-        img: "https://crazygames.com", 
-        url: "https://github.io" 
-    },
-    { 
-        name: "Tunnel Rush", 
-        img: "https://crazygames.com", 
-        url: "https://github.io" 
-    }
+    { name: "Slope", img: "https://crafty.gg", category: "trending", url: "https://mathandreadingscienceacademy.org" },
+    { name: "Retro Bowl", img: "https://crafty.gg", category: "trending", url: "https://github.io" },
+    { name: "Minecraft Classic", img: "https://crafty.gg", category: "new", url: "https://minecraft.net" },
+    { name: "Run 3", img: "https://crafty.gg", category: "new", url: "https://github.io" }
 ];
 
-const grid = document.getElementById('game-grid');
-const search = document.getElementById('search');
+const trendingGrid = document.getElementById('trending-grid');
+const newGrid = document.getElementById('new-grid');
 const modal = document.getElementById('game-modal');
 const gameFrame = document.getElementById('game-frame');
 const closeBtn = document.querySelector('.close-btn');
 
-function displayGames(filteredGames) {
-    grid.innerHTML = "";
-    filteredGames.forEach(game => {
+function renderCategory(container, filterTag) {
+    container.innerHTML = "";
+    const filtered = games.filter(g => g.category === filterTag);
+    
+    filtered.forEach(game => {
         const card = document.createElement('div');
         card.classList.add('game-card');
         card.innerHTML = `
-            <img src="${game.img}" alt="${game.name}" loading="lazy">
+            <img src="${game.img}" alt="${game.name}">
             <h3>${game.name}</h3>
         `;
         card.onclick = () => {
             gameFrame.src = game.url;
             modal.style.display = "block";
         };
-        grid.appendChild(card);
+        container.appendChild(card);
     });
 }
 
-search.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    const filtered = games.filter(g => g.name.toLowerCase().includes(term));
-    displayGames(filtered);
-});
-
 closeBtn.onclick = () => {
     modal.style.display = "none";
-    gameFrame.src = ""; 
+    gameFrame.src = "";
 };
 
-// Inicializa la cuadrícula visual
-displayGames(games);
+// Cargar las categorías en sus respectivas hileras
+renderCategory(trendingGrid, "trending");
+renderCategory(newGrid, "new");
